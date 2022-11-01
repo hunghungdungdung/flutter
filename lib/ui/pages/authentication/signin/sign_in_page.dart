@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/ui/blocs/blocs.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../generated/l10n.dart';
 
@@ -14,7 +17,17 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(S.current.sign_in),
+        child: ElevatedButton(
+          onPressed: () async {
+            await context.read<AuthBloc>().login("username", "");
+          },
+          child: Text(
+            "SIGN IN",
+            style: GoogleFonts.nanumPenScript(
+              fontSize: 24,
+            ),
+          ),
+        ),
       ),
     );
   }

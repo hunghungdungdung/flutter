@@ -166,6 +166,10 @@ For IOS:
   
 ##Flutter support multi language
 - Use flutter intl and flutter_localizations
+- Todo List
+- Timer: Dong ho dem nguoc
+- Music: 1 vai bai hat
+- Stop watch
 
 
 
