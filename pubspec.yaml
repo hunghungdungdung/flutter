@@ -3,7 +3,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -42,6 +42,7 @@ dependencies:
   # Collections and utilities functions and classes related to collections.
   collection: 1.16.0
   google_fonts: 2.0.0
+  stop_watch_timer: 2.0.0
 
 
 dev_dependencies:
