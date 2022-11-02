@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/ui/pages/home/todo/add_todo_page.dart';
 import 'package:flutter_application/ui/pages/home/todo/todo_detail_page.dart';
 import 'package:flutter_application/utils/navigator_support.dart';
 
@@ -35,6 +36,13 @@ class _MainNavigatorState extends State<MainNavigator> {
             return MaterialPageRoute(
               builder: (context) => TodoDetailPage(
                 todoId: todoId,
+              ),
+            );
+          case AddTodoPage.path:
+            int? todoId = setting.arguments as int?;
+            return MaterialPageRoute(
+              builder: (context) => AddTodoPage(
+                id: todoId,
               ),
             );
         }
