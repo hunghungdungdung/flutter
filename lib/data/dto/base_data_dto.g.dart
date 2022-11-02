@@ -9,10 +9,8 @@ part of 'base_data_dto.dart';
 BaseDataDto<T> _$BaseDataDtoFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) {
-  return BaseDataDto<T>()
-    ..data = _$nullableGenericFromJson(json['data'], fromJsonT);
-}
+) =>
+    BaseDataDto<T>()..data = _$nullableGenericFromJson(json['data'], fromJsonT);
 
 Map<String, dynamic> _$BaseDataDtoToJson<T>(
   BaseDataDto<T> instance,

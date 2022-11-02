@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/ui/blocs/todo/todo_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../blocs/todo/todo_state.dart';
 
 class TodoListPage extends StatefulWidget {
   static const path = "/todo-list";
@@ -8,122 +13,56 @@ class TodoListPage extends StatefulWidget {
   State<TodoListPage> createState() => _TodoListPageState();
 }
 
-class Todo {
-  Todo({required this.name, required this.checked});
-  final String name;
-  bool checked;
-}
-class TodoItem extends StatelessWidget {
-
-  TodoItem({
-    required this.todo,
-    required this.onTodoChanged,
-  }) : super(key: ObjectKey(todo));
-
-  final Todo todo;
-  final onTodoChanged;
-
-  TextStyle? _getTextStyle(bool checked) {
-    if (!checked) return null;
-
-    return TextStyle(
-      color: Colors.black54,
-      decoration: TextDecoration.lineThrough,
-    );
+class _TodoListPageState extends State<TodoListPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<TodoBloc>().initData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        onTodoChanged(todo);
-      },
-      leading: CircleAvatar(
-        child: Text(todo.name[0]),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Todo List"),
       ),
-      title: Text(todo.name, style: _getTextStyle(todo.checked)),
-    );
-  }
-}
-
-class TodoList extends StatefulWidget {
-  @override
-  _TodoListState createState() => new _TodoListState();
-}
-
-class _TodoListState extends State<TodoList> {
-  final TextEditingController _textFieldController = TextEditingController();
-  final List<Todo> _todos = <Todo>[];
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Todo list'),
+      body: BlocBuilder<TodoBloc, TodoState>(
+        builder: (context, state) {
+          return state.when((data) {
+            return ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.black.withOpacity(0.5),
+                    )),
+                    child: Row(
+                      children: [
+                        Text(data[index].title ?? ""),
+                      ],
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 16,
+                  );
+                },
+                itemCount: data.length);
+          }, loading: () {
+            return const Center(
+              child: CupertinoActivityIndicator(),
+            );
+          }, error: (error) {
+            return const Center(
+              child: Text("Data Error"),
+            );
+          });
+        },
       ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        children: _todos.map((Todo todo) {
-          return TodoItem(
-            todo: todo,
-            onTodoChanged: _handleTodoChange,
-          );
-        }).toList(),
-      ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () => _displayDialog(),
-          tooltip: 'Add Item',
-          child: Icon(Icons.add)),
-    );
-  }
-
-  void _handleTodoChange(Todo todo) {
-    setState(() {
-      todo.checked = !todo.checked;
-    });
-  }
-
-  void _addTodoItem(String name) {
-    setState(() {
-      _todos.add(Todo(name: name, checked: false));
-    });
-    _textFieldController.clear();
-  }
-
-  Future<void> _displayDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Add a new todo item'),
-          content: TextField(
-            controller: _textFieldController,
-            decoration: const InputDecoration(hintText: 'Type your new todo'),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Add'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                _addTodoItem(_textFieldController.text);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
-
-class TodoApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Todo list',
-      home: new TodoList(),
-    );
-  }
-}
-
-void main() => runApp(new TodoApp());

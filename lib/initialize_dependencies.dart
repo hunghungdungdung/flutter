@@ -7,8 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/datasource/local/local_service.dart';
 import 'data/dto/dto.dart';
+import 'data/repositories/base_repository_impl.dart';
 import 'data/repositories/repositories.dart';
 import 'env.dart';
+import 'ui/blocs/todo/todo_bloc.dart';
 
 Future initializeDependencies() async {
   Dio dio = Dio(BaseOptions(baseUrl: Env.instance.baseURL));
@@ -17,6 +19,7 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(dio);
 
   GetIt.instance.registerSingleton(AuthRepository());
+  GetIt.instance.registerSingleton(BaseRepositoryImpl());
 
   //region Local Service
   GetIt.instance.registerSingleton(await SharedPreferences.getInstance());
@@ -51,4 +54,5 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(AuthNavigationBloc());
 
   GetIt.instance.registerSingleton(AuthBloc());
+  GetIt.instance.registerSingleton(TodoBloc());
 }

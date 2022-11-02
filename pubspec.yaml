@@ -43,6 +43,7 @@ dependencies:
   collection: 1.16.0
   google_fonts: 2.0.0
   stop_watch_timer: 2.0.0
+  supabase_flutter: ^1.0.1
 
 
 dev_dependencies:

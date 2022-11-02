@@ -9,10 +9,9 @@ part of 'base_data_list_dto.dart';
 BaseDataListDto<T> _$BaseDataListDtoFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) {
-  return BaseDataListDto<T>()
-    ..data = (json['data'] as List<dynamic>?)?.map(fromJsonT).toList();
-}
+) =>
+    BaseDataListDto<T>()
+      ..data = (json['data'] as List<dynamic>?)?.map(fromJsonT).toList();
 
 Map<String, dynamic> _$BaseDataListDtoToJson<T>(
   BaseDataListDto<T> instance,
