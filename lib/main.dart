@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'application.dart';
+import 'ui/blocs/todo/todo_detail_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,7 @@ void main() async {
       BlocProvider.value(value: GetIt.instance.get<AuthNavigationBloc>()),
       BlocProvider.value(value: GetIt.instance.get<AuthBloc>()),
       BlocProvider.value(value: GetIt.instance.get<TodoBloc>()),
+      BlocProvider.value(value: GetIt.instance.get<TodoDetailBloc>()),
     ],
     child: const Application(),
   ));

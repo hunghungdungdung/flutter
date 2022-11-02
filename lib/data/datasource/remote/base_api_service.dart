@@ -20,4 +20,19 @@ class BaseApiService {
       rethrow;
     }
   }
+
+  Future addNote() async {
+
+  }
+
+  Future<TodoModel> getTodoDetail(int id) async {
+    try {
+      final response = await client.from("todo").select().eq('id', id);
+      developer.log('getTodoDetailLog ${response[0]}', name: 'getTodoDetail');
+      final todo = TodoDto.fromJson(response[0]);
+      return todo;
+    } catch (error) {
+      rethrow;
+    }
+  }
 }

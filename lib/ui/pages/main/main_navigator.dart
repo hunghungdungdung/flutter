@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/ui/pages/home/music/music_page.dart';
-import 'package:flutter_application/ui/pages/home/stop_watch/stop_watch_page.dart';
-import 'package:flutter_application/ui/pages/home/timer/timer_page.dart';
-import 'package:flutter_application/ui/pages/home/todo/todo_list_page.dart';
+import 'package:flutter_application/ui/pages/home/todo/todo_detail_page.dart';
 import 'package:flutter_application/utils/navigator_support.dart';
 
 import '../pages.dart';
@@ -33,6 +30,13 @@ class _MainNavigatorState extends State<MainNavigator> {
           case StopWatchPage.path:
             return MaterialPageRoute(
                 builder: (context) => const StopWatchPage());
+          case TodoDetailPage.path:
+            int todoId = setting.arguments as int;
+            return MaterialPageRoute(
+              builder: (context) => TodoDetailPage(
+                todoId: todoId,
+              ),
+            );
         }
       },
     );

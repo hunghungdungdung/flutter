@@ -11,6 +11,7 @@ import 'data/repositories/base_repository_impl.dart';
 import 'data/repositories/repositories.dart';
 import 'env.dart';
 import 'ui/blocs/todo/todo_bloc.dart';
+import 'ui/blocs/todo/todo_detail_bloc.dart';
 
 Future initializeDependencies() async {
   Dio dio = Dio(BaseOptions(baseUrl: Env.instance.baseURL));
@@ -55,4 +56,5 @@ Future initializeDependencies() async {
 
   GetIt.instance.registerSingleton(AuthBloc());
   GetIt.instance.registerSingleton(TodoBloc());
+  GetIt.instance.registerSingleton(TodoDetailBloc());
 }

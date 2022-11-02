@@ -11,4 +11,9 @@ class BaseRepositoryImpl implements BaseRepository {
     return baseApiService.getListTodos();
   }
 
+  @override
+  Future<TodoModel> getTodoDetail(int id) {
+    return baseApiService.getTodoDetail(id);
+  }
+
 }
