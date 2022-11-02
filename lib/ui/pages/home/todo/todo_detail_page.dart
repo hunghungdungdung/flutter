@@ -4,6 +4,8 @@ import 'package:flutter_application/ui/blocs/todo/todo_detail_bloc.dart';
 import 'package:flutter_application/ui/blocs/todo/todo_detail_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widgets/image_preview_widget.dart';
+
 class TodoDetailPage extends StatefulWidget {
   static const path = 'todo-detail';
   final int todoId;
@@ -45,13 +47,17 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16,),
+                      const SizedBox(
+                        height: 16,
+                      ),
                       Row(
                         children: [
                           Text(data.content ?? ""),
                         ],
                       ),
-                      const SizedBox(height: 32,),
+                      const SizedBox(
+                        height: 32,
+                      ),
                       const Text(
                         "Hình ảnh",
                         style: TextStyle(
@@ -59,8 +65,40 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 16,),
-                      Image.network(data.imageUrl ?? ""),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ImagePreviewWidget(
+                                url: data.imageUrl ?? "",
+                              ),
+                            ),
+                          );
+                        },
+                        child: AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Image.network(
+                              data.imageUrl ?? "",
+                              errorBuilder: (context, _, __) {
+                                return const Icon(
+                                  Icons.error,
+                                  color: Colors.redAccent,
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );
