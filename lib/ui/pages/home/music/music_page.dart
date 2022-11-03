@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MusicPage extends StatefulWidget {
@@ -13,63 +14,81 @@ class MusicPage extends StatefulWidget {
   State<MusicPage> createState() => _MusicPageState();
 }
 
-class _MusicPageState extends State<MusicPage> {
+class _MusicPageState extends State<MusicPage> with WidgetsBindingObserver {
   late AudioPlayer _player;
-  final _playlist = ConcatenatingAudioSource(children: [
-    // Remove this audio source from the Windows and Linux version because it's not supported yet
-
-    ClippingAudioSource(
-      start: const Duration(seconds: 60),
-      end: const Duration(seconds: 90),
-      child: AudioSource.uri(Uri.parse(
-          "https://aredir.nixcdn.com/NhacCuaTui2025/ChuaQuenNguoiYeuCu-HaNhi-7662060.mp3?st=9pIrnf4pbUBjOuGRDwJXyg&e=1667506178")),
-      tag: AudioMetadata(
-        album: "Chưa quên người yêu cũ",
-        title: "Chưa quên người yêu cũ",
-        artwork:
-            "https://avatar-ex-swe.nixcdn.com/song/2022/07/28/3/b/5/b/1658997436153_500.jpg",
+  final _playlist = ConcatenatingAudioSource(
+    children: [
+      ClippingAudioSource(
+        start: const Duration(seconds: 60),
+        end: const Duration(seconds: 90),
+        child: AudioSource.uri(
+          Uri.parse(
+              "https://aredir.nixcdn.com/NhacCuaTui2025/ChuaQuenNguoiYeuCu-HaNhi-7662060.mp3?st=9pIrnf4pbUBjOuGRDwJXyg&e=1667506178"),
+        ),
+        tag: MediaItem(
+          id: '1',
+          album: "Chưa quên người yêu cũ",
+          title: "Chưa quên người yêu cũ",
+          artist:
+              "https://avatar-ex-swe.nixcdn.com/song/2022/07/28/3/b/5/b/1658997436153_500.jpg",
+          artUri: Uri.parse(
+              "https://avatar-ex-swe.nixcdn.com/song/2022/07/28/3/b/5/b/1658997436153_500.jpg"),
+        ),
       ),
-    ),
-    AudioSource.uri(
-      Uri.parse(
-          "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3"),
-      tag: AudioMetadata(
-        album: "Science Friday",
-        title: "A Salute To Head-Scratching Science",
-        artwork:
-            "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+      AudioSource.uri(
+        Uri.parse(
+            "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3"),
+        tag: MediaItem(
+          id: '2',
+          album: "Science Friday",
+          title: "A Salute To Head-Scratching Science",
+          artist:
+              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+          artUri: Uri.parse(
+              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg"),
+        ),
       ),
-    ),
-    AudioSource.uri(
-      Uri.parse("https://s3.amazonaws.com/scifri-segments/scifri201711241.mp3"),
-      tag: AudioMetadata(
-        album: "Science Friday",
-        title: "From Cat Rheology To Operatic Incompetence",
-        artwork:
-            "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+      AudioSource.uri(
+        Uri.parse(
+            "https://s3.amazonaws.com/scifri-segments/scifri201711241.mp3"),
+        tag: MediaItem(
+          id: '3',
+          album: "Science Friday",
+          title: "From Cat Rheology To Operatic Incompetence",
+          artist:
+              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+          artUri: Uri.parse(
+              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg"),
+        ),
       ),
-    ),
-    AudioSource.uri(
-      Uri.parse("https://stream.nixcdn.com/NhacCuaTui2026/WaitingForYou-MONOOnionn-7733882.mp3?st=Qgh1uVdmffvRjKT2FlczTQ&amp;e=1667506056"),
-      tag: AudioMetadata(
-        album: "Vietnam",
-        title: "Waiting For You",
-        artwork:
-            "https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203_500.jpg",
+      AudioSource.uri(
+        Uri.parse(
+            "https://stream.nixcdn.com/NhacCuaTui2026/WaitingForYou-MONOOnionn-7733882.mp3?st=Qgh1uVdmffvRjKT2FlczTQ&amp;e=1667506056"),
+        tag: MediaItem(
+          id: '4',
+          album: "Vietnam",
+          title: "Waiting For You",
+          artist:
+              "https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203_500.jpg",
+          artUri: Uri.parse(
+              "https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203_500.jpg"),
+        ),
       ),
-    ),
-  ]);
+    ],
+  );
   int _addedCount = 0;
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   void initState() {
     super.initState();
-    // ambiguate(WidgetsBinding.instance)!.addObserver(this);
+    ambiguate(WidgetsBinding.instance)!.addObserver(this);
     _player = AudioPlayer();
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.black,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.black,
+      ),
+    );
     _init();
   }
 
@@ -106,7 +125,7 @@ class _MusicPageState extends State<MusicPage> {
     final sequence = _player.sequence;
     if (sequence == null) return;
     final source = sequence[index];
-    final metadata = source.tag as AudioMetadata;
+    final metadata = source.tag as MediaItem;
     _scaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
       content: Text('Finished playing ${metadata.title}'),
       duration: const Duration(seconds: 1),
@@ -115,7 +134,7 @@ class _MusicPageState extends State<MusicPage> {
 
   @override
   void dispose() {
-    // ambiguate(WidgetsBinding.instance)!.removeObserver(this);
+    ambiguate(WidgetsBinding.instance)!.removeObserver(this);
     _player.dispose();
     super.dispose();
   }
@@ -146,17 +165,18 @@ class _MusicPageState extends State<MusicPage> {
                 if (state?.sequence.isEmpty ?? true) {
                   return const SizedBox();
                 }
-                final metadata = state!.currentSource!.tag as AudioMetadata;
+                final metadata = state!.currentSource!.tag as MediaItem;
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Center(child: Image.network(metadata.artwork)),
+                        child:
+                            Center(child: Image.network(metadata.artist ?? "")),
                       ),
                     ),
-                    Text(metadata.album,
+                    Text(metadata.album ?? "",
                         style: Theme.of(context).textTheme.headline6),
                     Text(metadata.title),
                   ],
@@ -588,3 +608,5 @@ class HiddenThumbComponentShape extends SliderComponentShape {
     required Size sizeWithOverflow,
   }) {}
 }
+
+T? ambiguate<T>(T? value) => value;

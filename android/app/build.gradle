@@ -33,12 +33,13 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mobile.flutter_application"
+        applicationId "com.mobile.flutter_todo"
         minSdkVersion 16
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     flavorDimensions "env"
