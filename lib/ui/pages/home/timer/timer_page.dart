@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/round-button.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TimerPage extends StatefulWidget {
   static const path = "/timer";
@@ -63,98 +64,112 @@ class _TimerPageState extends State<TimerPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Timer"),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: NetworkImage(
+                'https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?w=2000'),
+            fit: BoxFit.cover),
       ),
-      backgroundColor: Color(0xfff5fbff),
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 300,
-                  height: 300,
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.grey.shade300,
-                    value: progress,
-                    strokeWidth: 6,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Timer",
+            style: GoogleFonts.courgette(
+            color: Colors.black,
+            fontSize: 18,
+          ),),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    width: 300,
+                    height: 300,
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.grey.shade300,
+                      value: progress,
+                      strokeWidth: 6,
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    if (controller.isDismissed) {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) => Container(
-                          height: 300,
-                          child: CupertinoTimerPicker(
-                            initialTimerDuration: controller.duration!,
-                            onTimerDurationChanged: (time) {
-                              setState(() {
-                                controller.duration = time;
-                              });
-                            },
+                  GestureDetector(
+                    onTap: () {
+                      if (controller.isDismissed) {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Container(
+                            height: 300,
+                            child: CupertinoTimerPicker(
+                              initialTimerDuration: controller.duration!,
+                              onTimerDurationChanged: (time) {
+                                setState(() {
+                                  controller.duration = time;
+                                });
+                              },
+                            ),
                           ),
+                        );
+                      }
+                    },
+                    child: AnimatedBuilder(
+                      animation: controller,
+                      builder: (context, child) => Text(
+                        countText,
+                        style: TextStyle(
+                          fontSize: 60,
+                          fontWeight: FontWeight.bold,
                         ),
-                      );
-                    }
-                  },
-                  child: AnimatedBuilder(
-                    animation: controller,
-                    builder: (context, child) => Text(
-                      countText,
-                      style: TextStyle(
-                        fontSize: 60,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    if (controller.isAnimating) {
-                      controller.stop();
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (controller.isAnimating) {
+                        controller.stop();
+                        setState(() {
+                          isPlaying = false;
+                        });
+                      } else {
+                        controller.reverse(
+                            from: controller.value == 0 ? 1.0 : controller.value);
+                        setState(() {
+                          isPlaying = true;
+                        });
+                      }
+                    },
+                    child: RoundButton(
+                      icon: isPlaying == true ? Icons.pause : Icons.play_arrow,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      controller.reset();
                       setState(() {
                         isPlaying = false;
                       });
-                    } else {
-                      controller.reverse(
-                          from: controller.value == 0 ? 1.0 : controller.value);
-                      setState(() {
-                        isPlaying = true;
-                      });
-                    }
-                  },
-                  child: RoundButton(
-                    icon: isPlaying == true ? Icons.pause : Icons.play_arrow,
+                    },
+                    child: RoundButton(
+                      icon: Icons.stop,
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    controller.reset();
-                    setState(() {
-                      isPlaying = false;
-                    });
-                  },
-                  child: RoundButton(
-                    icon: Icons.stop,
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

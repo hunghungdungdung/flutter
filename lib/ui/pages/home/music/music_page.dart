@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,55 +24,68 @@ class _MusicPageState extends State<MusicPage> with WidgetsBindingObserver {
         end: const Duration(seconds: 90),
         child: AudioSource.uri(
           Uri.parse(
-              "https://aredir.nixcdn.com/NhacCuaTui2025/ChuaQuenNguoiYeuCu-HaNhi-7662060.mp3?st=9pIrnf4pbUBjOuGRDwJXyg&e=1667506178"),
+              "https://aredir.nixcdn.com/Sony_Audio24/NightWaltzFilmVersion-Orchestra-2903264.mp3?st=wXNktvK4KHxjXqi-oaV_VQ&e=1667554686"),
         ),
         tag: MediaItem(
           id: '1',
-          album: "Chưa quên người yêu cũ",
-          title: "Chưa quên người yêu cũ",
+          album: "Orchestra",
+          title: "Night Waltz",
           artist:
-              "https://avatar-ex-swe.nixcdn.com/song/2022/07/28/3/b/5/b/1658997436153_500.jpg",
+              "https://necmusic.edu/sites/default/files/styles/large_landscape/public/HERO_OrchestraFullAbove_2271.jpg?itok=ZbZa-RzR",
           artUri: Uri.parse(
-              "https://avatar-ex-swe.nixcdn.com/song/2022/07/28/3/b/5/b/1658997436153_500.jpg"),
+              "https://necmusic.edu/sites/default/files/styles/large_landscape/public/HERO_OrchestraFullAbove_2271.jpg?itok=ZbZa-RzR"),
         ),
       ),
       AudioSource.uri(
         Uri.parse(
-            "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3"),
+            "https://aredir.nixcdn.com/NhacCuaTui844/ClassicalPianoSuiteNo.8GreyShores-Beethoven-2853984.mp3?st=MqEUzUiSOT7esT1Ff6EenA&e=1667554605"),
         tag: MediaItem(
           id: '2',
-          album: "Science Friday",
-          title: "A Salute To Head-Scratching Science",
+          album: "Piano Sounds",
+          title: "No.8: Grey Shores ",
           artist:
-              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Beethoven.jpg/260px-Beethoven.jpg",
           artUri: Uri.parse(
-              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg"),
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Beethoven.jpg/260px-Beethoven.jpg"),
         ),
       ),
       AudioSource.uri(
         Uri.parse(
-            "https://s3.amazonaws.com/scifri-segments/scifri201711241.mp3"),
+            "https://aredir.nixcdn.com/NhacCuaTui844/ClassicalPianoSuiteNo.3Flight-Beethoven-2853976.mp3?st=Hmp9JFgRwUNCd0v_IezZMg&e=1667554523"),
         tag: MediaItem(
           id: '3',
-          album: "Science Friday",
-          title: "From Cat Rheology To Operatic Incompetence",
+          album: "Piano Sounds",
+          title: "No.3: Flight",
           artist:
-              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+              "https://cdn.britannica.com/35/74835-050-F0B71060/canvas-oil-Wolfgang-Amadeus-Mozart-Barbara-Krafft-1819.jpg",
           artUri: Uri.parse(
-              "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg"),
+              "https://cdn.britannica.com/35/74835-050-F0B71060/canvas-oil-Wolfgang-Amadeus-Mozart-Barbara-Krafft-1819.jpg"),
         ),
       ),
       AudioSource.uri(
         Uri.parse(
-            "https://stream.nixcdn.com/NhacCuaTui2026/WaitingForYou-MONOOnionn-7733882.mp3?st=Qgh1uVdmffvRjKT2FlczTQ&amp;e=1667506056"),
+            "https://aredir.nixcdn.com/Believe_Audio73/AmazonRain-RainSoundsRainforestRainforestSounds-7342335.mp3?st=QRPG8G_Na-p66Giy4I-oTg&e=1667554296"),
         tag: MediaItem(
           id: '4',
-          album: "Vietnam",
-          title: "Waiting For You",
+          album: "White Noise",
+          title: "Rain Sounds",
           artist:
-              "https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203_500.jpg",
+              "https://img.freepik.com/premium-photo/rain-water-drop-falling-city-street-floor-heavy-rain-day_1962-2005.jpg?w=2000",
           artUri: Uri.parse(
-              "https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203_500.jpg"),
+              "https://img.freepik.com/premium-photo/rain-water-drop-falling-city-street-floor-heavy-rain-day_1962-2005.jpg?w=2000"),
+        ),
+      ),
+      AudioSource.uri(
+        Uri.parse(
+            "https://aredir.nixcdn.com/Sony_Audio96/WaterSoundsSleepRelaxationPt87-SleepyJohn-7208516.mp3?st=dSEI763TSjXXjUkmQIMcOg&e=1667554038"),
+        tag: MediaItem(
+          id: '5',
+          album: "White noise",
+          title: "Water Sounds",
+          artist:
+          "https://www.ppic.org/wp-content/uploads/water_option2.jpg",
+          artUri: Uri.parse(
+              "https://www.ppic.org/wp-content/uploads/water_option2.jpg"),
         ),
       ),
     ],
@@ -80,6 +94,7 @@ class _MusicPageState extends State<MusicPage> with WidgetsBindingObserver {
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
+
   void initState() {
     super.initState();
     ambiguate(WidgetsBinding.instance)!.addObserver(this);
@@ -149,171 +164,189 @@ class _MusicPageState extends State<MusicPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Music"),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: NetworkImage(
+                'https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?w=2000'),
+            fit: BoxFit.cover),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: StreamBuilder<SequenceState?>(
-              stream: _player.sequenceStateStream,
-              builder: (context, snapshot) {
-                final state = snapshot.data;
-                if (state?.sequence.isEmpty ?? true) {
-                  return const SizedBox();
-                }
-                final metadata = state!.currentSource!.tag as MediaItem;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:
-                            Center(child: Image.network(metadata.artist ?? "")),
+      child: Scaffold(
+        appBar: AppBar(
+          title:  Text(
+          "Music",
+          style: GoogleFonts.courgette(
+          color: Colors.black,
+          fontSize: 18,
+      ),
+      ),
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+        ),
+        backgroundColor: Colors.transparent,
+
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: StreamBuilder<SequenceState?>(
+                stream: _player.sequenceStateStream,
+                builder: (context, snapshot) {
+                  final state = snapshot.data;
+                  if (state?.sequence.isEmpty ?? true) {
+                    return const SizedBox();
+                  }
+                  final metadata = state!.currentSource!.tag as MediaItem;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child:
+                              Center(child: Image.network(metadata.artist ?? "")),
+                        ),
                       ),
-                    ),
-                    Text(metadata.album ?? "",
-                        style: Theme.of(context).textTheme.headline6),
-                    Text(metadata.title),
-                  ],
-                );
-              },
+                      Text(metadata.album ?? "",
+                          style: Theme.of(context).textTheme.headline6),
+                      Text(metadata.title),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          ControlButtons(_player),
-          StreamBuilder<PositionData>(
-            stream: _positionDataStream,
-            builder: (context, snapshot) {
-              final positionData = snapshot.data;
-              return SeekBar(
-                duration: positionData?.duration ?? Duration.zero,
-                position: positionData?.position ?? Duration.zero,
-                bufferedPosition:
-                    positionData?.bufferedPosition ?? Duration.zero,
-                onChangeEnd: (newPosition) {
-                  _player.seek(newPosition);
-                },
-              );
-            },
-          ),
-          const SizedBox(height: 8.0),
-          Row(
-            children: [
-              StreamBuilder<LoopMode>(
-                stream: _player.loopModeStream,
-                builder: (context, snapshot) {
-                  final loopMode = snapshot.data ?? LoopMode.off;
-                  const icons = [
-                    Icon(Icons.repeat, color: Colors.grey),
-                    Icon(Icons.repeat, color: Colors.orange),
-                    Icon(Icons.repeat_one, color: Colors.orange),
-                  ];
-                  const cycleModes = [
-                    LoopMode.off,
-                    LoopMode.all,
-                    LoopMode.one,
-                  ];
-                  final index = cycleModes.indexOf(loopMode);
-                  return IconButton(
-                    icon: icons[index],
-                    onPressed: () {
-                      _player.setLoopMode(cycleModes[
-                          (cycleModes.indexOf(loopMode) + 1) %
-                              cycleModes.length]);
-                    },
-                  );
-                },
-              ),
-              Expanded(
-                child: Text(
-                  "Playlist",
-                  style: Theme.of(context).textTheme.headline6,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              StreamBuilder<bool>(
-                stream: _player.shuffleModeEnabledStream,
-                builder: (context, snapshot) {
-                  final shuffleModeEnabled = snapshot.data ?? false;
-                  return IconButton(
-                    icon: shuffleModeEnabled
-                        ? const Icon(Icons.shuffle, color: Colors.orange)
-                        : const Icon(Icons.shuffle, color: Colors.grey),
-                    onPressed: () async {
-                      final enable = !shuffleModeEnabled;
-                      if (enable) {
-                        await _player.shuffle();
-                      }
-                      await _player.setShuffleModeEnabled(enable);
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 240.0,
-            child: StreamBuilder<SequenceState?>(
-              stream: _player.sequenceStateStream,
+            ControlButtons(_player),
+            StreamBuilder<PositionData>(
+              stream: _positionDataStream,
               builder: (context, snapshot) {
-                final state = snapshot.data;
-                final sequence = state?.sequence ?? [];
-                return ReorderableListView(
-                  onReorder: (int oldIndex, int newIndex) {
-                    if (oldIndex < newIndex) newIndex--;
-                    _playlist.move(oldIndex, newIndex);
+                final positionData = snapshot.data;
+                return SeekBar(
+                  duration: positionData?.duration ?? Duration.zero,
+                  position: positionData?.position ?? Duration.zero,
+                  bufferedPosition:
+                      positionData?.bufferedPosition ?? Duration.zero,
+                  onChangeEnd: (newPosition) {
+                    _player.seek(newPosition);
                   },
-                  children: [
-                    for (var i = 0; i < sequence.length; i++)
-                      Dismissible(
-                        key: ValueKey(sequence[i]),
-                        background: Container(
-                          color: Colors.redAccent,
-                          alignment: Alignment.centerRight,
-                          child: const Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Icon(Icons.delete, color: Colors.white),
-                          ),
-                        ),
-                        onDismissed: (dismissDirection) {
-                          _playlist.removeAt(i);
-                        },
-                        child: Material(
-                          color: i == state!.currentIndex
-                              ? Colors.grey.shade300
-                              : null,
-                          child: ListTile(
-                            title: Text(sequence[i].tag.title as String),
-                            onTap: () {
-                              _player.seek(Duration.zero, index: i);
-                            },
-                          ),
-                        ),
-                      ),
-                  ],
                 );
               },
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          _playlist.add(AudioSource.uri(
-            Uri.parse("asset:///audio/nature.mp3"),
-            tag: AudioMetadata(
-              album: "Public Domain",
-              title: "Nature Sounds ${++_addedCount}",
-              artwork:
-                  "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+            const SizedBox(height: 8.0),
+            Row(
+              children: [
+                StreamBuilder<LoopMode>(
+                  stream: _player.loopModeStream,
+                  builder: (context, snapshot) {
+                    final loopMode = snapshot.data ?? LoopMode.off;
+                    const icons = [
+                      Icon(Icons.repeat, color: Colors.grey),
+                      Icon(Icons.repeat, color: Colors.orange),
+                      Icon(Icons.repeat_one, color: Colors.orange),
+                    ];
+                    const cycleModes = [
+                      LoopMode.off,
+                      LoopMode.all,
+                      LoopMode.one,
+                    ];
+                    final index = cycleModes.indexOf(loopMode);
+                    return IconButton(
+                      icon: icons[index],
+                      onPressed: () {
+                        _player.setLoopMode(cycleModes[
+                            (cycleModes.indexOf(loopMode) + 1) %
+                                cycleModes.length]);
+                      },
+                    );
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    "Playlist",
+                    style: Theme.of(context).textTheme.headline6,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                StreamBuilder<bool>(
+                  stream: _player.shuffleModeEnabledStream,
+                  builder: (context, snapshot) {
+                    final shuffleModeEnabled = snapshot.data ?? false;
+                    return IconButton(
+                      icon: shuffleModeEnabled
+                          ? const Icon(Icons.shuffle, color: Colors.orange)
+                          : const Icon(Icons.shuffle, color: Colors.grey),
+                      onPressed: () async {
+                        final enable = !shuffleModeEnabled;
+                        if (enable) {
+                          await _player.shuffle();
+                        }
+                        await _player.setShuffleModeEnabled(enable);
+                      },
+                    );
+                  },
+                ),
+              ],
             ),
-          ));
-        },
+            SizedBox(
+              height: 240.0,
+              child: StreamBuilder<SequenceState?>(
+                stream: _player.sequenceStateStream,
+                builder: (context, snapshot) {
+                  final state = snapshot.data;
+                  final sequence = state?.sequence ?? [];
+                  return ReorderableListView(
+                    onReorder: (int oldIndex, int newIndex) {
+                      if (oldIndex < newIndex) newIndex--;
+                      _playlist.move(oldIndex, newIndex);
+                    },
+                    children: [
+                      for (var i = 0; i < sequence.length; i++)
+                        Dismissible(
+                          key: ValueKey(sequence[i]),
+                          background: Container(
+                            color: Colors.redAccent,
+                            alignment: Alignment.centerRight,
+                            child: const Padding(
+                              padding: EdgeInsets.only(right: 8.0),
+                              child: Icon(Icons.delete, color: Colors.white),
+                            ),
+                          ),
+                          onDismissed: (dismissDirection) {
+                            _playlist.removeAt(i);
+                          },
+                          child: Material(
+                            color: i == state!.currentIndex
+                                ? Colors.grey.shade300
+                                : null,
+                            child: ListTile(
+                              title: Text(sequence[i].tag.title as String),
+                              onTap: () {
+                                _player.seek(Duration.zero, index: i);
+                              },
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            _playlist.add(AudioSource.uri(
+              Uri.parse("asset:///audio/nature.mp3"),
+              tag: AudioMetadata(
+                album: "Public Domain",
+                title: "Nature Sounds ${++_addedCount}",
+                artwork:
+                    "https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg",
+              ),
+            ));
+          },
+        ),
       ),
     );
   }

@@ -25,83 +25,111 @@ class _HomePageState extends State<HomePage> {
             fit: BoxFit.cover),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
-          // appBar: AppBar(
-          //   title: const Text("To-do List"),
-          // ),
-          body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      height: 75,
-                      width: 175,
-                      child: ElevatedButton(
-                          onPressed: () async {
-                            Navigator.pushNamed(context, TodoListPage.path);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0.0,
-                            primary: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                          ),
-                          child: Text("Todo List",
-                              style: TextStyle(color: Colors.black)))),
-                  SizedBox(
-                    height: 32,
+        backgroundColor: Colors.transparent,
+        // appBar: AppBar(
+        //   title: const Text("To-do List"),
+        // ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 75,
+                width: 175,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Navigator.pushNamed(context, TodoListPage.path);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
                   ),
-                  SizedBox(
-                      height: 75,
-                      width: 175,
-                      child: ElevatedButton(
-                          onPressed: () async {
-                            Navigator.pushNamed(context, TimerPage.path);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0.0,
-                            primary: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                          ),
-                          child: Text("Timer",
-                              style: TextStyle(color: Colors.black)))),
-                  SizedBox(
-                    height: 32,
+                  child: Text(
+                    "Todo List",
+                    style: GoogleFonts.courgette(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
                   ),
-                  SizedBox(
-                      height: 75,
-                      width: 175,
-                      child: ElevatedButton(
-                          onPressed: () async {
-                            Navigator.pushNamed(context, MusicPage.path);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0.0,
-                            primary: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                          ),
-                          child: Text("Music",
-                              style: TextStyle(color: Colors.black)))),
-                  SizedBox(
-                    height: 32,
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SizedBox(
+                height: 75,
+                width: 175,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Navigator.pushNamed(context, TimerPage.path);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
                   ),
-                  SizedBox(
-                    height: 75,
-                    width: 175,
-                    child: ElevatedButton(
-                        onPressed: () async {
-                          Navigator.pushNamed(context, StopWatchPage.path);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          primary: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                        ),
-                        child: Text("Stopwatch",
-                            style: TextStyle(color: Colors.black))),
+                  child: Text(
+                    "Timer", style: GoogleFonts.courgette(
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                   ),
-                ]),
-          )),
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SizedBox(
+                height: 75,
+                width: 175,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Navigator.pushNamed(context, MusicPage.path);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                  ),
+                  child:  Text(
+                    "Music",
+                    style: GoogleFonts.courgette(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SizedBox(
+                height: 75,
+                width: 175,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Navigator.pushNamed(context, StopWatchPage.path);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                  ),
+                  child:  Text(
+                    "Stopwatch",
+                    style: GoogleFonts.courgette(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
